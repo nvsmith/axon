@@ -1,0 +1,63 @@
+# Last updated: 05 JUN 2025
+# For WordPress sites
+
+# Tracks only custom theme code
+
+# Excludes files & directories for:
+# backup, cache, config, dependency, editor, logs, OS, remote, system, temp
+
+# ─────────────────────────────────────────────
+
+# Cache, logs, temp, and backup files
+*.bak
+*.log
+*.sql
+*.swp
+*.swo
+*.tar.gz
+*.tmp
+*.zip
+.idea/
+
+
+# Dependency directories
+composer.lock
+node_modules/**
+package-lock.json
+vendor/**
+
+
+# System / editor / remote / OS files
+._*
+*.code-workspace
+.apdisk
+.AppleDB
+.AppleDesktop
+.AppleDouble
+.com.apple.timemachine.donotpresent
+.DocumentRevisions-V100
+.DS_Store
+.fseventsd
+.idea/**
+.LSOverride
+.Spotlight-V100
+.TemporaryItems
+.Trashes
+.VolumeIcon.icns
+.vscode/**
+Desktop.ini
+Network Trash Folder
+Temporary Items
+Thumbs.db
+
+# (Optional) Local by Flywheel / WP Engine config — ignore if Git repo is in site root
+sql/**
+conf/**
+logs/**
+local-site.json
+
+# ─────────────────────────────────────────────
+# WordPress
+# ─────────────────────────────────────────────
+
+debug.log

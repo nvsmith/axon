@@ -1,0 +1,19 @@
+/*
+Theme Name: Axon
+Theme URI: https://github.com/nvsmith/axon
+Author: Nathan Smith
+Author URI: https://outpostwebstudio.com/
+Description: A minimalist, dependency-free WordPress theme built for speed, clarity, and extensibility. Backend-ready and WooCommerce-compatible.
+Version: 1.0.0
+Requires at least: 6.0
+Tested up to: 6.5
+Requires PHP: 8.0
+License: GNU General Public License v2 or later
+License URI: https://www.gnu.org/licenses/gpl-2.0.html
+Text Domain: axon
+Tags: minimalist, starter, clean, custom-theme, woocommerce-compatible
+*/
+
+body {
+    background-color: lightcoral;
+}
