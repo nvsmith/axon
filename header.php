@@ -12,10 +12,12 @@
 <!DOCTYPE html>
 <html <?php language_attributes(); ?>>
 <head>
-  <meta charset="<?php bloginfo( 'charset' ); ?>">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <!-- The <title> tag is handled dynamically via add_theme_support( 'title-tag' ) -->
-  <?php wp_head(); ?>
+    <meta charset="<?php bloginfo( 'charset' ); ?>">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- The <title> tag is handled dynamically via add_theme_support( 'title-tag' ) -->
+
+    <!-- Output metadata, styles, and scripts from 3rd parties -->
+    <?php wp_head(); ?>
 </head>
 
 <body <?php body_class(); ?>>
