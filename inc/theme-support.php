@@ -1,11 +1,14 @@
 <?php
 /**
  * Theme Support Features
+ * 
+ * Enables translation support using load_theme_textdomain().
  *
- * Enables support for core WordPress features like title tag, thumbnails, HTML5 markup,
- * custom logo, and more using add_theme_support().
+ * Enables support for core WordPress features using add_theme_support().
  *
- * @package Groundwork
+ * Declares WooCommerce compatibility (prevents default styles from loading).
+ *
+ * @package Axon
  */
 
  // Exit if accessed directly
@@ -13,6 +16,13 @@ if ( ! defined( 'ABSPATH' ) ) {
     exit; 
 }
 
+// Load theme textdomain for translation support
+function axon_load_textdomain() {
+	load_theme_textdomain( 'axon', get_template_directory() . '/languages' );
+}
+add_action( 'after_setup_theme', 'axon_load_textdomain', 0 );
+
+// Load basic theme support & WooCommerce compatibility
 function axon_theme_support() {
     // Add dynamic <title> tag support in <head>
     add_theme_support( 'title-tag' );
@@ -35,7 +45,8 @@ function axon_theme_support() {
         'flex-width'  => true,
         'flex-height' => true
     ) );
+
+    // Add support for WooCommerce
+    add_theme_support( 'woocommerce' );
 }
-
 add_action( 'after_setup_theme', 'axon_theme_support' );
-
