@@ -4,40 +4,41 @@
 
 <a href="https://outpostwebstudio.com/" target="_blank" rel="author">Nate @ Outpost Web Studio</a> | Last Updated: 30 JUN 2025
 
-- [Axon Theme](#axon-theme)
-  - [About This Project](#about-this-project)
-  - [Installation](#installation)
-  - [Scaffold Branch Strategy](#scaffold-branch-strategy)
-  - [Hierarchy \& Responsibilities](#hierarchy--responsibilities)
-    - [Back-End Structure](#back-end-structure)
-    - [Front-End Structure](#front-end-structure)
-    - [Theme Root Files](#theme-root-files)
-      - [Directory Summary](#directory-summary)
-  - [Theme Directories \& Files](#theme-directories--files)
-    - [Static Homepage \& Blog Setup](#static-homepage--blog-setup)
-    - [Root-Level Template Files](#root-level-template-files)
-    - [`inc/` – Theme Logic \& Setup](#inc--theme-logic--setup)
-    - [`languages/` – Translations (Optional)](#languages--translations-optional)
-    - [`assets/` – Front-End Resources](#assets--front-end-resources)
-    - [`templates/` – Modular Theme Rendering](#templates--modular-theme-rendering)
-      - [`templates/layouts/`](#templateslayouts)
-      - [`templates/parts/`](#templatesparts)
-      - [`templates/components/`](#templatescomponents)
-  - [WooCommerce Integration](#woocommerce-integration)
-    - [Requirements For WooCommerce Layouts](#requirements-for-woocommerce-layouts)
-    - [Optional Template Overrides](#optional-template-overrides)
-  - [Styles](#styles)
-    - [Structure](#structure)
-    - [Class Names](#class-names)
-    - [Styling Guidelines](#styling-guidelines)
-      - [Layouts \& Document Flow](#layouts--document-flow)
-      - [Spacing (Margins \& Padding)](#spacing-margins--padding)
-      - [Class Naming Consistency](#class-naming-consistency)
-  - [Troubleshooting](#troubleshooting)
-  - [Developer Tips](#developer-tips)
-  - [Contributing](#contributing)
-  - [License](#license)
-  - [Contact](#contact)
+-   [Axon Theme](#axon-theme)
+    -   [About This Project](#about-this-project)
+    -   [Installation](#installation)
+    -   [Scaffold Branch Strategy](#scaffold-branch-strategy)
+    -   [Hierarchy \& Responsibilities](#hierarchy--responsibilities)
+        -   [Back-End Structure](#back-end-structure)
+            -   [Back-End Directory Summary](#back-end-directory-summary)
+        -   [Front-End Structure](#front-end-structure)
+        -   [Theme Root Files](#theme-root-files)
+            -   [Directory Summary](#directory-summary)
+    -   [Theme Directories \& Files](#theme-directories--files)
+        -   [Static Homepage \& Blog Setup](#static-homepage--blog-setup)
+        -   [Root-Level Template Files](#root-level-template-files)
+        -   [`inc/` – Theme Logic \& Setup](#inc--theme-logic--setup)
+        -   [`languages/` – Translations (Optional)](#languages--translations-optional)
+        -   [`assets/` – Front-End Resources](#assets--front-end-resources)
+        -   [`templates/` – Modular Theme Rendering](#templates--modular-theme-rendering)
+            -   [`templates/layouts/`](#templateslayouts)
+            -   [`templates/parts/`](#templatesparts)
+            -   [`templates/components/`](#templatescomponents)
+    -   [WooCommerce Integration](#woocommerce-integration)
+        -   [Requirements For WooCommerce Layouts](#requirements-for-woocommerce-layouts)
+        -   [Optional Template Overrides](#optional-template-overrides)
+    -   [Styles](#styles)
+        -   [Structure](#structure)
+        -   [Class Names](#class-names)
+        -   [Styling Guidelines](#styling-guidelines)
+            -   [Layouts \& Document Flow](#layouts--document-flow)
+            -   [Spacing (Margins \& Padding)](#spacing-margins--padding)
+            -   [Class Naming Consistency](#class-naming-consistency)
+    -   [Troubleshooting](#troubleshooting)
+    -   [Developer Tips](#developer-tips)
+    -   [Contributing](#contributing)
+    -   [License](#license)
+    -   [Contact](#contact)
 
 ## About This Project
 
@@ -125,6 +126,16 @@ The theme follows a modular, separation-of-concerns approach, with a clear disti
 
 -   **`languages/`**
     Stores translation files for internationalization (`.pot`, `.mo`, `.po`). This folder is optional and can be removed if you don’t plan to support translations.
+
+#### Back-End Directory Summary
+
+| File              | Purpose                                                                        |
+| ----------------- | ------------------------------------------------------------------------------ |
+| `functions.php`   | Central loader, theme entry point, and routing hub for logic files             |
+| `inc/setup.php`   | Theme support declarations, `add_theme_support()`, `register_nav_menus()`, etc |
+| `inc/enqueue.php` | Enqueue styles/scripts (CSS, JS)                                               |
+| `inc/widgets.php` | Register widget areas (sidebars)                                               |
+| `inc/hooks.php`   | Custom hooks or filters                                                        |
 
 ### Front-End Structure
 
