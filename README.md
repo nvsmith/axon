@@ -161,9 +161,10 @@ To enable this:
 
 WordPress will then:
 
--   Use `front-page.php` for the homepage
--   Use `home.php` for the blog archive
-    If either file is missing, WP will fall back to `page.php` or `index.php` as needed.
+-   Use `front-page.php` for the homepage.
+-   Use `home.php` for the blog archive.
+
+If either file is missing, WP will fall back to `page.php` or `index.php` as needed.
 
 ## Theme Directories & Files
 
