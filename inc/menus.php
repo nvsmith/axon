@@ -6,7 +6,7 @@
  * 
  * Adds dynamic classes to menu items & links based on menu location.
  *
- * @package Groundwork
+ * @package Axon
  */
 
 // Exit if accessed directly

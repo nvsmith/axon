@@ -5,7 +5,7 @@
  * Registers widget areas (sidebars) used in various parts of the theme layout,
  * such as footer, sidebars, and header utility bar.
  *
- * @package Groundwork
+ * @package Axon
  */
 
  // Exit if accessed directly

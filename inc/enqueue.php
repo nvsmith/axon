@@ -4,7 +4,7 @@
  *
  * Registers and enqueues stylesheets and JavaScript files.
  *
- * @package Groundwork
+ * @package Axon
  */
 
 // Exit if accessed directly
