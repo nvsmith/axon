@@ -17,18 +17,18 @@ if ( ! defined( 'ABSPATH' ) ) {
 // Register navigation menus
 function axon_register_menus() {
     register_nav_menus( array(
-        'header' => __( 'Header Menu', 'axon' ),
-        'footer'  => __( 'Footer Menu', 'axon' ),
-        'social' => __( 'Social Media Menu', 'axon' ),
-        'top-bar' => __( 'Top Bar Menu', 'axon' )
+        'header-menu' => __( 'Header Menu', 'axon' ),
+        'footer-menu'  => __( 'Footer Menu', 'axon' ),
+        'social-menu' => __( 'Social Media Menu', 'axon' ),
+        'top-bar-menu' => __( 'Top Bar Menu', 'axon' )
     ) );
 }
 add_action( 'after_setup_theme', 'axon_register_menus' );
 
-// Add menu item classes based on menu location
+// Add menu item (<li>) classes based on menu location
 function axon_menu_item_classes( $classes, $item, $args, $depth ) {
     if ( isset( $args->theme_location ) ) {
-        $classes[] = $args->theme_location . '-menu__item';
+        $classes[] = $args->theme_location . '__item';
     }
 
     return $classes;
@@ -37,10 +37,10 @@ function axon_menu_item_classes( $classes, $item, $args, $depth ) {
 // 10 = standard priority, 4 = number of args from above function that `add_filter` needs to pass
 add_filter( 'nav_menu_css_class', 'axon_menu_item_classes', 10, 4 );
 
-// Add link classes for menu items based on menu location
+// Add menu link (<a>) classes based on menu location
 function axon_menu_link_attributes( $atts, $item, $args, $depth ) {
     if ( isset( $args->theme_location ) ) {
-        $atts['class'] = $args->theme_location . '-menu__link';
+        $atts['class'] = $args->theme_location . '__link';
     }
     
     return $atts;

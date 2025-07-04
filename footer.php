@@ -1,6 +1,8 @@
 <?php
 /**
  * The template for displaying the footer
+ * 
+ * Contains closing HTML and `wp_footer()` hook to output footer scripts from 3rd parties
  *
  * @package Axon
  */
@@ -8,35 +10,38 @@
 
         <footer class="site-footer" role="contentinfo" aria-label="Site Footer">
             <div class="container site-footer__container">
+                <!-- Footer Sidebar (Widget Area) -->
                 <?php if ( is_active_sidebar( 'footer-area')) : ?>
-                    <!-- Footer Widgets -->
-                    <div class="row site-footer__row">
-                        <div class="col site-footer__col site-footer__widgets">
-                            <?php dynamic_sidebar( 'footer-area' ); ?>
-                        </div> <!-- end site-footer__widgets -->
-                    </div> <!-- end site-footer__row -->
-                <?php endif; ?>
-
-                <?php if (has_nav_menu( 'footer' ) ) : ?>
-                    <!-- Footer Navigation -->
-                    <div class="row site-footer__row">
-                        <div class="col site-footer__col site-footer__nav-col">
-                            <nav class="site-footer__nav" role="navigation" aria-label="Footer menu">
-                                <?php wp_nav_menu( array(
-                                    'theme_location' => 'footer',
-                                    'menu_class' => 'site-footer__menu',
-                                    'container' => false,
-                                    'depth' => 1,
-                                ));
-                                ?>
-                            </nav>
-                        </div> <!-- end site-footer__nav-col -->
-                    </div> <!-- end site-footer__row -->
-                <?php endif; ?>
-                
                 
                 <div class="row site-footer__row">
-                    <!-- Site Info / Attribution -->
+                    <div class="col site-footer__col site-footer__widgets">
+                        <?php dynamic_sidebar( 'footer-area' ); ?>
+                    </div> <!-- end site-footer__widgets -->
+                </div> <!-- end site-footer__row -->
+               
+                <?php endif; ?>
+
+                <!-- Footer Menu (if available) -->
+                <?php if (has_nav_menu( 'footer-menu' ) ) : ?>
+                
+                <div class="row site-footer__row">
+                    <div class="col site-footer__col site-footer__nav-col">
+                        <nav class="site-footer__nav" role="navigation" aria-label="Footer menu">
+                            <?php wp_nav_menu( array(
+                                'theme_location' => 'footer-menu',
+                                'menu_class' => 'site-footer__menu',
+                                'container' => false,
+                                'depth' => 1,
+                            ));
+                            ?>
+                        </nav>
+                    </div> <!-- end site-footer__nav-col -->
+                </div> <!-- end site-footer__row -->
+                
+                <?php endif; ?>
+                
+                <!-- Site Info / Attribution -->
+                <div class="row site-footer__row">
                     <div class="col site-footer__col site-footer__attribution">
                         <p class="site-footer__text">
                             &copy; <?php echo date( 'Y' ); ?>

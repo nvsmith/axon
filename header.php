@@ -42,12 +42,12 @@
                 </div> <!-- end site-header__branding -->
                 
                 <!-- Header Menu (if available) -->
-                <?php if ( has_nav_menu( 'header' ) ) : ?>
+                <?php if ( has_nav_menu( 'header-menu' ) ) : ?>
 
                 <div class="col site-header__col site-header__nav-col">
                     <nav class="site-header__nav" role="navigation" aria-label="Header menu">
                         <?php wp_nav_menu( array(
-                            'theme_location' => 'header',
+                            'theme_location' => 'header-menu',
                             'menu_class' => 'site-header__menu',
                             'container' => false,
                             'depth' => 1,
