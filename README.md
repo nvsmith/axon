@@ -2,7 +2,7 @@
 
 # Axon Theme
 
-<a href="https://outpostwebstudio.com/" target="_blank" rel="author">Nate @ Outpost Web Studio</a> | Last Updated: 02 JUL 2025
+<a href="https://outpostwebstudio.com/" target="_blank" rel="author">Nate @ Outpost Web Studio</a> | Last Updated: 07 JUL 2025
 
 -   [Axon Theme](#axon-theme)
     -   [About This Project](#about-this-project)
@@ -12,17 +12,8 @@
         -   [Back-End Structure](#back-end-structure)
         -   [Front-End Structure](#front-end-structure)
         -   [Theme Root Files](#theme-root-files)
-        -   [Responsibilities Summary](#responsibilities-summary)
+        -   [Project Structure Reference](#project-structure-reference)
     -   [Static Homepage \& Blog Setup](#static-homepage--blog-setup)
-    -   [Theme Directories \& Files](#theme-directories--files)
-        -   [Front-End Resources - `assets/`](#front-end-resources---assets)
-        -   [Back-End Logic \& Setup - `inc/`](#back-end-logic--setup---inc)
-        -   [Translations - `languages/` (Optional)](#translations---languages-optional)
-        -   [Modular Theme Rendering - `templates/`](#modular-theme-rendering---templates)
-            -   [`templates/layouts/`](#templateslayouts)
-            -   [`templates/parts/`](#templatesparts)
-            -   [`templates/components/`](#templatescomponents)
-        -   [Root-Level Template Files](#root-level-template-files)
     -   [WooCommerce Integration](#woocommerce-integration)
         -   [Requirements For WooCommerce Layouts](#requirements-for-woocommerce-layouts)
         -   [Optional Template Overrides](#optional-template-overrides)
@@ -59,49 +50,47 @@ Axon is a minimalist, dependency-free WordPress theme built for clarity, speed, 
 
 The `scaffold` branch will maintain a clean, minimal version of the Axon theme. It includes all basic directories, root files for core WP functionality, basic templates, back-end support features, a .gitignore file, and this README document.
 
-All files are intended as starting points only—minimally developed and fully customizable; feel free to delete them if they aren't necessary for your project. This branch serves as a permanent foundation for new themes, forks, or major rebuilds.
-
 > -   Avoid developing features directly on this branch; instead, create new branches from it as needed.
 > -   If you are developing off of this branch, remember to swap out the placeholder `screenshot.png` with your own image once you finish.
 
-```
-# scaffold branch
+All files are intended as starting points only—minimally developed and fully customizable; feel free to delete them if they aren't necessary for your project. This branch serves as a permanent foundation for new themes, forks, or major rebuilds.
 
-wp-content/themes/axon/
-├── 404.php
-├── archive.php
-├── comments.php
-├── footer.php
-├── front-page.php
-├── functions.php
-├── header.php
-├── home.php
-├── index.php
-├── page.php
-├── screenshot.png   # Replace this placeholder with your own image #
-├── search.php
-├── searchform.php
-├── sidebar.php
-├── single.php
-├── style.css
-├── woocommerce.php
-│
-├── assets/
-│   ├── css/
-│   ├── js/
-│   └── images/
-│
-├── components/
-│
-├── inc/
-│
-├── languages/
-│
-└── templates/
-    ├── components/
-    └── layouts/
-    └── parts
-```
+| **File/Directory**      | **Description**                                          |
+| ----------------------- | -------------------------------------------------------- |
+| 📂 `assets/`            | Front-end resources                                      |
+| ├─ 📂 `css/`            | Stylesheets                                              |
+| ├─ 📂 `js/`             | Scripts                                                  |
+| └─ 📂 `img/`            | Images & icons                                           |
+| 📂 `components/`        | Modular, reusable UI elements                            |
+| 📂 `inc/`               | Theme logic and configuration                            |
+| ├─ `enqueue.php`        | Registers & enqueues CSS/JS files                        |
+| ├─ `menus.php`          | Registers navigation menus                               |
+| ├─ `theme-support.php`  | Enables core features                                    |
+| └─ `widgets.php`        | Registers sidebars (widget areas)                        |
+| 📂 `languages/`         | Translation files for internationalization               |
+| 📂 `templates/`         | Front-end rendering                                      |
+| ├─ 📂 `components/`     | Modular UI elements                                      |
+| ├─ 📂 `layouts/`        | Large page structures                                    |
+| ├─ 📂 `page-templates/` | Custom templates for individual pages                    |
+| └─ 📂 `parts/`          | Partial templates                                        |
+| `404.php`               | Template for "Page Not Found"                            |
+| `archive.php`           | Template for archive pages                               |
+| `comments.php`          | Template for rendering comments                          |
+| `footer.php`            | Footer layout, called by `get_footer()`                  |
+| `front-page.php`        | Template for static homepage (set in Settings → Reading) |
+| `functions.php`         | Main logic entry point — loads from `inc/`               |
+| `header.php`            | Header layout, called by `get_header()`                  |
+| `home.php`              | Blog posts template (if front page is static)            |
+| `index.php`             | Fallback template if no other matches (REQUIRED)         |
+| `page.php`              | Default static page template                             |
+| `README.md`             | This informative document: "Axon Theme"                  |
+| `screenshot.png`        | Theme preview image (Dashboard → Apperance → Themes)     |
+| `search.php`            | Template for search results page                         |
+| `searchform.php`        | Custom search form                                       |
+| `sidebar.php`           | Sidebar markup (optional if your theme uses sidebars)    |
+| `single.php`            | Template for single post types                           |
+| `style.css`             | Theme metadata + base styles (REQUIRED)                  |
+| `woocommerce.php`       | WooCommerce template override                            |
 
 ## Hierarchy & Responsibilities
 
@@ -119,11 +108,13 @@ The `templates/` directory houses all modular rendering files used to build the 
 
 From **largest to smallest rendering scope**:
 
--   `templates/layouts/` - Large structural templates that define the overall layout of a page (e.g., full-width, with-sidebar). High reusability across multiple views.
+-   `templates/page-templates/` — Custom page templates that define the structure and layout of specific WordPress pages (e.g., About, FAQ, Contact). These templates are selectable in the WordPress Dashboard when editing a page and typically load reusable layouts or content parts. They provide a flexible way to define unique page types while keeping logic cleanly separated from global layout code.
 
--   `templates/parts/` - Reusable content regions or page sections used within templates (e.g., post loops, hero sections, featured areas). Typically context-aware and may depend on WordPress template logic.
+-   `templates/layouts/` - Large structural layout templates (e.g., full-width, with-sidebar) that define reusable page scaffolding. These layouts are typically loaded by page templates or archive templates and help maintain consistent structure across different pages.
 
--   `templates/components/` - Small, UI-focused building blocks such as buttons, cards, or alerts. These are purely presentational and can be used inside parts, layouts, or other components.
+-   `templates/parts/` - Reusable content regions or partials used within templates or layouts (e.g., post loops, hero sections, featured content). These are often context-aware and rely on WordPress template logic like `the_post()`.
+
+-   `templates/components/` - Small, UI-focused building blocks such as buttons, cards, or alerts. These are purely presentational and can be used inside parts, layouts, or other components. They should not contain business logic.
 
 -   `assets/` - Holds all static resources like CSS, JavaScript, and images. While not part of the rendering hierarchy, it supports the visual and interactive layers of the theme.
 
@@ -131,17 +122,15 @@ From **largest to smallest rendering scope**:
 
 The root of the theme contains all files required by WordPress’s template hierarchy and global structure.
 
-### Responsibilities Summary
+### Project Structure Reference
 
-| Concept                       | Description                      | Directory               | Used For                                                                                  |
-| ----------------------------- | -------------------------------- | ----------------------- | ----------------------------------------------------------------------------------------- |
-| **Includes**                  | Theme logic & setup              | `inc/`                  | Backend functionality: setup functions, hooks, enqueueing styles/scripts, utility logic   |
-| **Translations**              | Language file support            | `languages/`            | Internationalization (`.pot`, `.po`, `.mo` files) — optional, safe to remove if unused    |
-| **Layouts**                   | Page-level structural templates  | `templates/layouts/`    | Overall layouts like full-width or with-sidebar wrappers                                  |
-| **Template Parts (Partials)** | Content sections and view blocks | `templates/parts/`      | Reusable post loops, hero sections, feature areas — often WP-context-aware                |
-| **Components**                | Presentational UI elements       | `templates/components/` | Modular design elements like buttons, cards, badges, alerts                               |
-| **Assets**                    | Front-end resources              | `assets/`               | Non-hierarchical folder containing `css/`, `js/`, and `img/` assets                       |
-| **Root**                      | Core templates & WordPress files | Theme root              | Required files like `style.css`, `functions.php`, `index.php`, `header.php`, `footer.php` |
+| Concept          | Description                    | Directory    | Used For                                                                                  |
+| ---------------- | ------------------------------ | ------------ | ----------------------------------------------------------------------------------------- |
+| **Assets**       | Front-end resources            | `assets/`    | Contains `css/`, `js/`, and `img/` — supports the visual and interactive layers of theme  |
+| **Includes**     | Theme logic & setup            | `inc/`       | Backend functionality: setup functions, hooks, enqueueing styles/scripts, utility logic   |
+| **Translations** | Language file support          | `languages/` | Internationalization (`.pot`, `.po`, `.mo` files) — optional, safe to remove if unused    |
+| **Templates**    | View layer rendering structure | `templates/` | Houses all front-end partials, components, layouts, and custom page templates             |
+| **Root**         | Core templates & WP files      | Theme root   | Required files like `style.css`, `functions.php`, `index.php`, `header.php`, `footer.php` |
 
 ## Static Homepage & Blog Setup
 
@@ -166,79 +155,6 @@ WordPress will then:
 
 If either file is missing, WP will fall back to `page.php` or `index.php` as needed.
 
-## Theme Directories & Files
-
-### Front-End Resources - `assets/`
-
-Static assets like stylesheets, scripts, images, and icons.
-
-### Back-End Logic & Setup - `inc/`
-
-Contains files that register, configure, or extend WordPress behavior, including enqueuing styles and scripts. No front-end markup lives here.
-
-### Translations - `languages/` (Optional)
-
-Can hold `.pot`, `.po`, or `.mo` files for translation support.
-If unused, you can delete this directory.
-
-### Modular Theme Rendering - `templates/`
-
-Houses modular rendering files for layout, content sections, and UI elements. These are **not part of the core template hierarchy**, but are included manually via `get_template_part()`.
-
-#### `templates/layouts/`
-
-Structural scaffolding for pages (e.g. grid containers, full-width layout, with-sidebar layout).
-
-Examples:
-
--   `full-width.php`
--   `with-sidebar.php`
-
-#### `templates/parts/`
-
-Reusable content blocks or context-aware markup for things like post loops or hero areas.
-
-Examples:
-
--   `content-archive.php`
--   `content-single.php`
--   `content-none.php`
--   `hero-banner.php`
-
-#### `templates/components/`
-
-Small UI elements that can be reused anywhere (inside layouts, parts, or templates).
-
-Examples:
-
--   `button.php`
--   `card.php`
--   `alert.php`
-
-### Root-Level Template Files
-
-These files live in the theme root and are directly used by WordPress via the template hierarchy:
-
-| File              | Purpose                                                                               |
-| ----------------- | ------------------------------------------------------------------------------------- |
-| `index.php`       | Universal fallback for any request                                                    |
-| `front-page.php`  | Homepage layout (if using static homepage)                                            |
-| `home.php`        | Blog index (Posts page)                                                               |
-| `page.php`        | Static page template                                                                  |
-| `single.php`      | Single blog post view                                                                 |
-| `archive.php`     | Archive views (categories, tags, authors, dates)                                      |
-| `search.php`      | Displays search results                                                               |
-| `404.php`         | Fallback when no content is found                                                     |
-| `comments.php`    | Renders comments and comment form                                                     |
-| `searchform.php`  | Custom search form markup (optional override)                                         |
-| `header.php`      | Site `<head>` and opening HTML (called via `get_header()`)                            |
-| `footer.php`      | Footer markup and closing HTML (called via `get_footer()`)                            |
-| `sidebar.php`     | Sidebar content area — includes widgets or custom markup (called via `get_sidebar()`) |
-| `functions.php`   | Theme bootstrap: loads includes, registers theme support, hooks, menus, and assets    |
-| `style.css`       | Main stylesheet with theme metadata in header comment                                 |
-| `screenshot.png`  | Dashboard thumbnail preview for this theme                                            |
-| `woocommerce.php` | Optional WooCommerce compatibility wrapper — loads WooCommerce templates if active.   |
-
 ## WooCommerce Integration
 
 This theme includes basic WooCommerce compatibility to support standard eCommerce features out of the box. If you’re not using WooCommerce, you can safely delete `woocommerce.php` and `inc/woocommerce-hooks.php`
@@ -255,19 +171,13 @@ By default, WooCommerce falls back to this file (if it exists) instead of using 
 
 If deeper customization is needed, you can override specific WooCommerce templates by creating a `/woocommerce/` folder in your theme.
 
-```
-axon/
-├── woocommerce/
-│   ├── archive-product.php
-│   ├── single-product.php
-│   ├── cart/cart.php
-│   └── checkout/form-checkout.php
-```
-
--   `archive-product.php` - Shop/product archive layout
--   `single-product.php` - Single product view.
--   `cart/cart.php` - Cart contents
--   `checkout/form-checkout.php` - Layout for the Checkout page
+| **File or Folder**              | **Purpose / Description**                                |
+| ------------------------------- | -------------------------------------------------------- |
+| 📂 `woocommerce/`               | WooCommerce override directory for theme customization   |
+| ├─ `archive-product.php`        | Template for the **shop/product archive** page           |
+| ├─ `single-product.php`         | Template for viewing **individual product pages**        |
+| ├─ `cart/cart.php`              | Template for displaying the **cart contents**            |
+| └─ `checkout/form-checkout.php` | Template for rendering the **checkout form/page layout** |
 
 **To override a template:**
 
