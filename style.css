@@ -17,3 +17,18 @@ Tags: minimalist, starter, clean, custom-theme, woocommerce-compatible
 body {
     background-color: lightcoral;
 }
+
+header.site-header {
+    background-color: lightblue;
+}
+
+footer.site-footer {
+    background-color: lightgreen;
+}
+
+.alert {
+    background-color: yellow;
+    border: 1px solid black;
+    text-align: center;
+    padding: 0.5rem;
+}
