@@ -22,16 +22,16 @@ if ( is_front_page() && is_home() ) {
 } elseif ( is_home() ) {
 	// Blog index (set via "Posts page" in Settings → Reading)
 	$posts_page_id = get_option( 'page_for_posts' );
-	$title = $posts_page_id ? get_the_title( $posts_page_id ) : __( 'Blog', 'axon' );
+	$title = $posts_page_id ? get_the_title( $posts_page_id ) : __( 'Blog', theme_get_text_domain() );
 
 } elseif ( is_archive() ) {
 	$title = get_the_archive_title();
 
 } elseif ( is_search() ) {
-	$title = sprintf( __( 'Search Results for: %s', 'axon' ), get_search_query() );
+	$title = sprintf( __( 'Search Results for: %s', theme_get_text_domain() ), get_search_query() );
 
 } elseif ( is_404() ) {
-	$title = __( 'Page Not Found', 'axon' );
+	$title = __( 'Page Not Found', theme_get_text_domain() );
 
 } else {
 	// Default: use current page/post title
@@ -45,7 +45,7 @@ if ( is_front_page() && is_home() ) {
 		<div class="row hero__row">
 			<div class="col hero__col">
 				<h1 class="hero__title"><?php echo esc_html( $title ); ?></h1>
-                
+
 				<?php if ( $description && is_front_page() ) : ?>
 					<p class="hero__description">
                         <?php echo esc_html( $description ); ?>

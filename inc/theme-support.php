@@ -7,6 +7,8 @@
  * Enables support for core WordPress features using add_theme_support().
  *
  * Declares WooCommerce compatibility (prevents default styles from loading).
+ * 
+ * Provides a global helper function to get the current theme's text domain.
  *
  * @package Axon
  */
@@ -50,3 +52,20 @@ function axon_theme_support() {
     add_theme_support( 'woocommerce' );
 }
 add_action( 'after_setup_theme', 'axon_theme_support' );
+
+/**
+ * Get the current theme's text domain to pass into translation functions
+ *
+ * @return string
+ */
+function theme_get_text_domain() {
+    // Ensure text domain is only loaded once
+    static $domain = null;
+    
+    if ( $domain === null ) {
+        // NOTE: Replace 'axon' with your own theme's text domain
+        $domain = wp_get_theme()->get( 'TextDomain' ) ?: 'axon'; 
+	}
+	
+    return $domain;
+}

@@ -2,7 +2,7 @@
 
 # Axon Theme
 
-<a href="https://outpostwebstudio.com/" target="_blank" rel="author">Nate @ Outpost Web Studio</a> | Last Updated: 07 JUL 2025
+<a href="https://outpostwebstudio.com/" target="_blank" rel="author">Nate @ Outpost Web Studio</a> | Last Updated: 10 JUL 2025
 
 -   [Axon Theme](#axon-theme)
     -   [About This Project](#about-this-project)
@@ -10,6 +10,7 @@
     -   [Scaffold Branch Strategy](#scaffold-branch-strategy)
     -   [Hierarchy \& Responsibilities](#hierarchy--responsibilities)
         -   [Back-End Structure](#back-end-structure)
+            -   [Translation Helper](#translation-helper)
         -   [Front-End Structure](#front-end-structure)
         -   [Theme Root Files](#theme-root-files)
         -   [Project Structure Reference](#project-structure-reference)
@@ -58,27 +59,28 @@ All files are intended as starting points only—minimally developed and fully c
 | **File/Directory**      | **Description**                                          |
 | ----------------------- | -------------------------------------------------------- |
 | 📂 `assets/`            | Front-end resources                                      |
-| ├─ 📂 `css/`            | Stylesheets                                              |
-| ├─ 📂 `js/`             | Scripts                                                  |
+| └─ 📂 `css/`            | Stylesheets                                              |
+| └─ 📂 `js/`             | Scripts                                                  |
 | └─ 📂 `img/`            | Images & icons                                           |
 | 📂 `components/`        | Modular, reusable UI elements                            |
 | 📂 `inc/`               | Theme logic and configuration                            |
-| ├─ `enqueue.php`        | Registers & enqueues CSS/JS files                        |
-| ├─ `menus.php`          | Registers navigation menus                               |
-| ├─ `theme-support.php`  | Enables core features                                    |
+| └─ `dev-tools.php`      | Utility tools for development and debugging              |
+| └─ `enqueue.php`        | Registers & enqueues CSS/JS files                        |
+| └─ `menus.php`          | Registers navigation menus                               |
+| └─ `theme-support.php`  | Enables core features                                    |
 | └─ `widgets.php`        | Registers sidebars (widget areas)                        |
 | 📂 `languages/`         | Translation files for internationalization               |
 | 📂 `templates/`         | Front-end rendering                                      |
-| ├─ 📂 `components/`     | Modular UI elements                                      |
-| ├─ 📂 `layouts/`        | Large page structures                                    |
-| ├─ 📂 `page-templates/` | Custom templates for individual pages                    |
+| └─ 📂 `components/`     | Modular UI elements                                      |
+| └─ 📂 `layouts/`        | Large page structures                                    |
+| └─ 📂 `page-templates/` | Custom templates for individual pages                    |
 | └─ 📂 `parts/`          | Partial templates                                        |
 | `404.php`               | Template for "Page Not Found"                            |
 | `archive.php`           | Template for archive pages                               |
 | `comments.php`          | Template for rendering comments                          |
 | `footer.php`            | Footer layout, called by `get_footer()`                  |
 | `front-page.php`        | Template for static homepage (set in Settings → Reading) |
-| `functions.php`         | Main logic entry point — loads from `inc/`               |
+| `functions.php`         | Main logic entry point — loads files from `inc/`         |
 | `header.php`            | Header layout, called by `get_header()`                  |
 | `home.php`              | Blog posts template (if front page is static)            |
 | `index.php`             | Fallback template if no other matches (REQUIRED)         |
@@ -101,6 +103,27 @@ The theme follows a modular, separation-of-concerns approach, with a clear disti
 -   `functions.php` - Acts as the central loader and routing hub for all logic files.
 -   `inc/` - Contains all PHP logic, theme setup, hooks, and utility functions. These files power the theme behind the scenes and do **not** directly output front-end markup.
 -   `languages/` - Stores translation files for internationalization (`.pot`, `.mo`, `.po`). This folder is optional and can be removed if you don’t plan to support translations.
+
+#### Translation Helper
+
+To simplify localization, the theme includes a helper function, `theme_get_text_domain()` (defined in `inc/theme-support.php`) to dynamically fetch the theme’s text domain. You can call this function in any of your theme's files.
+
+**Example usage:**
+
+```php
+__( 'Read more', theme_get_text_domain() );
+```
+
+This function returns the `Text Domain` value specified in the `style.css` file header. It is primarily used in translation functions like `__()` or `_e()` to avoid hardcoding the domain and ensure portability into other themes.
+
+**Note For Custom Theme Development**
+
+If you develop from this Axon theme, be sure to replace this helper function's fallback text domain with your own!
+
+```php
+// Replace 'axon' with your own theme's text domain
+$domain = wp_get_theme()->get( 'TextDomain' ) ?: 'axon';
+```
 
 ### Front-End Structure
 
@@ -174,9 +197,9 @@ If deeper customization is needed, you can override specific WooCommerce templat
 | **File or Folder**              | **Purpose / Description**                                |
 | ------------------------------- | -------------------------------------------------------- |
 | 📂 `woocommerce/`               | WooCommerce override directory for theme customization   |
-| ├─ `archive-product.php`        | Template for the **shop/product archive** page           |
-| ├─ `single-product.php`         | Template for viewing **individual product pages**        |
-| ├─ `cart/cart.php`              | Template for displaying the **cart contents**            |
+| └─ `archive-product.php`        | Template for the **shop/product archive** page           |
+| └─ `single-product.php`         | Template for viewing **individual product pages**        |
+| └─ `cart/cart.php`              | Template for displaying the **cart contents**            |
 | └─ `checkout/form-checkout.php` | Template for rendering the **checkout form/page layout** |
 
 **To override a template:**
