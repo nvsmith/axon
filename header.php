@@ -57,12 +57,13 @@
                 <?php if ( has_nav_menu( 'header-menu' ) ) : ?>
                     <div class="col site-header__col site-header__nav-col">
                         <nav class="site-header__nav" role="navigation" aria-label="Header menu">
-                            <?php wp_nav_menu( array(
-                                'theme_location' => 'header-menu',
-                                'menu_class' => 'header__menu',
-                                'container' => false,
-                                'depth' => 1,
-                            ));
+                            <?php 
+                                wp_nav_menu( array(
+                                    'theme_location' => 'header-menu',
+                                    'menu_class' => 'header__menu',
+                                    'container' => false,
+                                    'depth' => 1,
+                                ));
                             ?>
                         </nav>
                     </div> <!-- end site-header__nav-col -->
