@@ -15,6 +15,8 @@ get_header();
 ?>
 
 <main class="site-main" role="main" aria-label="<?php echo esc_attr( __( 'Main content', 'axon' ) ); ?>">
+    <?php get_template_part( 'templates/parts/hero', 'global' ); ?>
+
     <div class="container site-main__container">
         <div class="row site-main__row">
             <!-- If posts exist -->

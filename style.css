@@ -22,6 +22,10 @@ header.site-header {
     background-color: lightblue;
 }
 
+.hero {
+    background-color: lightgray;
+}
+
 footer.site-footer {
     background-color: lightgreen;
 }

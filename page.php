@@ -14,6 +14,9 @@ get_header();
 
 if ( have_posts() ) : ?>
     <main class="site-main">
+        <?php get_template_part( 'templates/parts/hero', 'global' ); ?>
+
+
         <div class="container site-main__container">
             <div class="row site-main__row">
                 <?php while ( have_posts() ) : the_post(); ?>
