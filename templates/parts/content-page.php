@@ -16,6 +16,6 @@ if ( get_post_type() !== 'page' ) {
 }
 ?>
 
-<section class="content">
+<section class="content" role="region" aria-label="<?php echo esc_attr_x( 'Page content', 'ARIA label for static page section', theme_get_text_domain() ); ?>">
     <?php the_content(); ?>
 </section>
