@@ -1,15 +1,14 @@
 <?php
 /**
- * Template part for rendering the content of a static page
+ * Template part for rendering the content of a generic static page
  *
- * This file is loaded by `page.php` to output the main content of a WordPress Page.
- * It is responsible for rendering the page's title and content inside a structured <article> element.
- *
- * Includes a safeguard to exit early if the current post type is not 'page'.
- * This ensures the template part is not used in other contexts accidentally.
+ * This partial is loaded by `page.php` and is responsible for displaying the main content of a WordPress Page.
+ * 
+ * Think of it as a direct window into the content you enter via the WordPress Dashboard when editing a page.
  *
  * @package Axon
  */
+
 
 
 if ( get_post_type() !== 'page' ) {
@@ -17,12 +16,6 @@ if ( get_post_type() !== 'page' ) {
 }
 ?>
 
-<article id="post-<?php the_ID(); ?>" <?php post_class( 'page' ); ?>>
-    <header class="page__header">
-        <h1 class="page__title"><?php the_title(); ?></h1>
-    </header>
-
-    <div class="page__content">
-        <?php the_content(); ?>
-    </div>
-</article>
+<section class="content">
+    <?php the_content(); ?>
+</section>

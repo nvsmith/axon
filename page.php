@@ -1,34 +1,27 @@
 <?php
 /**
- * The template for rendering static pages.
+ * Template for rendering static WordPress Pages
  *
- * Used for all WordPress Pages (created via Admin → Pages),
- * unless a more specific template is defined (e.g., `page-slug.php`, `front-page.php`, etc).
+ * This is the default template used for all pages created via the WordPress Dashboard (Pages → Add New),
+ * unless a more specific template is available (e.g., `page-slug.php`, `page-{id}.php`, or `front-page.php`).
  * 
- * This template defines where things go, but not necessarily what the content is.
+ * Responsible for assembling the structure of standard pages (such as About, Contact, or FAQ)
+ * while deferring the actual content output to `content-page.php` in the `templates/parts` directory.
  *
  * @package Axon
  */
 
 get_header();
+?>
 
-if ( have_posts() ) : ?>
-    <main class="site-main">
-        <?php get_template_part( 'templates/parts/hero', 'global' ); ?>
+<main class="site-main">
+    <?php get_template_part( 'templates/parts/hero', 'global' ); ?>
 
+    <?php if ( have_posts() ) : ?>
+        <?php while ( have_posts() ) : the_post(); ?>
+            <?php get_template_part( 'templates/parts/content', 'page' ); ?>
+        <?php endwhile; ?>
+    <?php endif; ?>
+</main>
 
-        <div class="container site-main__container">
-            <div class="row site-main__row">
-                <?php while ( have_posts() ) : the_post(); ?>
-                
-                <div class="col site-main__col site-main__col--page">
-                    <?php get_template_part( 'templates/parts/content', 'page' ); ?>
-                </div> <!-- end site-main__col--post -->
-               
-                <?php endwhile; ?>
-            </div> <!-- end site-main__row -->
-        </div> <!-- end site-main__container -->
-    </main>
-<?php endif;
-
-get_footer();
+<?php get_footer(); ?>
