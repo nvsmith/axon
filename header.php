@@ -23,7 +23,7 @@
     <!-- `body_class()` fires the `do_action( 'wp_body_open' )` hook to allow plugins to add content. -->
     <?php wp_body_open(); ?>
 
-    <header class="site-header">
+    <header class="site-header" role="banner" aria-label="<?php echo esc_attr_x( 'Site Header', 'Document landmark', theme_get_text_domain() ); ?>">
         <div class="container site-header__container">
             <div class="row site-header__row">
                 <div class="col site-header__col site-header__branding">

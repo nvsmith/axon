@@ -9,7 +9,7 @@
  * @package Axon
  */
 ?>
-    <footer class="site-footer" role="contentinfo" aria-label="Site Footer">
+    <footer class="site-footer" role="contentinfo" aria-label="<?php echo esc_attr_x( 'Site Footer', 'Document landmark', theme_get_text_domain() ); ?>">
         <div class="container site-footer__container">
             <div class="row site-footer__row">
                 <!-- Footer Sidebar/Widget Area (if available) -->

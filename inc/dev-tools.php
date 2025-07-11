@@ -5,6 +5,11 @@
  * @package Axon
  */
 
+// Exit if accessed directly
+if ( ! defined( 'ABSPATH' ) ) {
+    exit;
+}
+
 // Log the current template to the browser console
 add_action( 'wp_footer', 'theme_console_log_template', 100 );
 

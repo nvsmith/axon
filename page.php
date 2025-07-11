@@ -14,7 +14,7 @@
 get_header();
 ?>
 
-<main class="site-main">
+<main class="site-main" role="main" aria-label="<?php echo esc_attr_x( 'Main content', 'ARIA label for main region', theme_get_text_domain() ); ?>">
     <?php get_template_part( 'templates/parts/hero', 'global' ); ?>
 
     <?php if ( have_posts() ) : ?>

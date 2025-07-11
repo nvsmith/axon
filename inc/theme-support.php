@@ -13,9 +13,9 @@
  * @package Axon
  */
 
- // Exit if accessed directly
+// Exit if accessed directly
 if ( ! defined( 'ABSPATH' ) ) {
-    exit; 
+    exit;
 }
 
 // Load theme textdomain for translation support
