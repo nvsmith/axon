@@ -15,7 +15,7 @@ Tags: minimalist, starter, clean, custom-theme, woocommerce-compatible
 */
 
 body {
-    background-color: lightcoral;
+    background-color: lightslategray;
 }
 
 header.site-header {
@@ -23,7 +23,11 @@ header.site-header {
 }
 
 .hero {
-    background-color: lightgray;
+    background-color: lightpink;
+}
+
+article {
+    background-color: lightseagreen;
 }
 
 footer.site-footer {
