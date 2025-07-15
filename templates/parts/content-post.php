@@ -48,4 +48,8 @@ if ( get_post_type() !== 'post' ) {
             </div> <!-- end post-list__col -->
         </div> <!-- end post-list__row -->
     </div> <!-- end post-list__container -->
+
+    <?php
+        get_template_part( 'templates/layouts/pagination' );
+    ?>
 </section>
