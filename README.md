@@ -2,7 +2,7 @@
 
 # Axon Theme
 
-<a href="https://outpostwebstudio.com/" target="_blank" rel="author">Nate @ Outpost Web Studio</a> | Last Updated: 10 JUL 2025
+<a href="https://outpostwebstudio.com/" target="_blank" rel="author">Nate @ Outpost Web Studio</a> | Last Updated: 15 JUL 2025
 
 -   [Axon Theme](#axon-theme)
     -   [About This Project](#about-this-project)
@@ -12,6 +12,7 @@
         -   [Back-End Structure](#back-end-structure)
             -   [Translation Helper](#translation-helper)
         -   [Front-End Structure](#front-end-structure)
+            -   [When \& Where To Use](#when--where-to-use)
         -   [Theme Root Files](#theme-root-files)
         -   [Project Structure Reference](#project-structure-reference)
     -   [Static Homepage \& Blog Setup](#static-homepage--blog-setup)
@@ -72,9 +73,9 @@ All files are intended as starting points only—minimally developed and fully c
 | 📂 `languages/`         | Translation files for internationalization               |
 | 📂 `templates/`         | Front-end rendering                                      |
 | └─ 📂 `components/`     | Modular UI elements                                      |
-| └─ 📂 `layouts/`        | Large page structures                                    |
-| └─ 📂 `page-templates/` | Custom templates for individual pages                    |
-| └─ 📂 `parts/`          | Partial templates                                        |
+| └─ 📂 `layouts/`        | Developer-only, large structure shells                   |
+| └─ 📂 `page-templates/` | User-selectable templates for individual pages           |
+| └─ 📂 `parts/`          | Partials (reusable template sections)                    |
 | `404.php`               | Template for "Page Not Found"                            |
 | `archive.php`           | Template for archive pages                               |
 | `comments.php`          | Template for rendering comments                          |
@@ -131,7 +132,7 @@ The `templates/` directory houses all modular rendering files used to build the 
 
 From **largest to smallest rendering scope**:
 
--   `templates/page-templates/` — Custom page templates that define the structure and layout of specific WordPress pages (e.g., About, FAQ, Contact). These templates are selectable in the WordPress Dashboard when editing a page and typically load reusable layouts or content parts. They provide a flexible way to define unique page types while keeping logic cleanly separated from global layout code.
+-   `templates/page-templates/` — Custom page templates that define the structure and layout of specific WordPress pages (e.g., About, FAQ, Contact). They must contain a `/** Template Name: … */` header that WordPress lists in **Page Attributes → Template**. These templates are selectable in the WordPress Dashboard when editing a page and typically load reusable layouts or content parts. They provide a flexible way to define unique page types while keeping logic cleanly separated from global layout code.
 
 -   `templates/layouts/` - Large structural layout templates (e.g., full-width, with-sidebar) that define reusable page scaffolding. These layouts are typically loaded by page templates or archive templates and help maintain consistent structure across different pages.
 
@@ -140,6 +141,13 @@ From **largest to smallest rendering scope**:
 -   `templates/components/` - Small, UI-focused building blocks such as buttons, cards, or alerts. These are purely presentational and can be used inside parts, layouts, or other components. They should not contain business logic.
 
 -   `assets/` - Holds all static resources like CSS, JavaScript, and images. While not part of the rendering hierarchy, it supports the visual and interactive layers of the theme.
+
+#### When & Where To Use
+
+-   Use Page‑Templates only for pages that users will explicitly assign from the back-end.
+-   Use Layouts for shared structural shells among core templates.
+-   Use Parts for self‑contained sections that can be reused inside layouts or page‑templates.
+-   Use Components for tiny UI pieces inside parts.
 
 ### Theme Root Files
 

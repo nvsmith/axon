@@ -1,6 +1,6 @@
 <?php
 /**
- * Template part for displaying a post preview in archive or blog index views
+ * Template part for displaying a post preview section in archive or blog index views
  *
  * This partial is used inside The Loop to display a summarized version 
  * of each post — typically including the title, excerpt, thumbnail, and 
@@ -48,8 +48,4 @@ if ( get_post_type() !== 'post' ) {
             </div> <!-- end post-list__col -->
         </div> <!-- end post-list__row -->
     </div> <!-- end post-list__container -->
-
-    <?php
-        get_template_part( 'templates/layouts/pagination' );
-    ?>
 </section>

@@ -40,7 +40,7 @@ if ( is_front_page() && is_home() ) {
 
 ?>
 
-<section class="hero hero--global" role="region" aria-label="<?php echo esc_attr_x( 'Hero section', 'ARIA label for global hero section', theme_get_text_domain() ); ?>">
+<section class="hero" role="region" aria-label="<?php echo esc_attr_x( 'Hero section', 'ARIA label for hero section', theme_get_text_domain() ); ?>">
 	<div class="container hero__container">
 		<div class="row hero__row">
 			<div class="col hero__col">

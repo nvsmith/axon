@@ -18,20 +18,23 @@ body {
     background-color: lightslategray;
 }
 
-header.site-header {
+header,
+footer {
     background-color: lightblue;
 }
 
-.hero {
+section {
+    border: 1px solid;
+    margin: 8px 0;
+}
+
+.hero,
+.pagination {
     background-color: lightpink;
 }
 
 article {
     background-color: lightseagreen;
-}
-
-footer.site-footer {
-    background-color: lightgreen;
 }
 
 .alert {
