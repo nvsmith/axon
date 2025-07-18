@@ -39,13 +39,7 @@ if ( get_post_type() !== 'post' ) {
                         <div class="single-post__content">
                             <?php the_content(); ?>
 
-                            <!--nextpage--> <!-- WordPress pagination tag in the content -->
-                            <?php
-                                wp_link_pages( array(
-                                    'before' => '<div class="page-links">' . esc_html__( 'Pages:', theme_get_text_domain() ),
-                                    'after'  => '</div>',
-                                ) );
-                            ?>
+                            <?php get_template_part( 'templates/components/pagination', 'post' ); ?>
                         </div> <!-- end single-post__content -->
                     </article>
                 <?php endwhile; ?>

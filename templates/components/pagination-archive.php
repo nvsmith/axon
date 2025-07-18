@@ -1,13 +1,13 @@
 <?php
 /**
- * Component: Pagination Nav
+ * Component: Pagination – Archive
  *
- * Renders pagination links using WordPress’s the_posts_pagination().
- * WP Core automatically includes a <nav> element and a hidden <h2> screen reader text
+ * Outputs pagination links for multi-post pages (e.g., blog archives, search results).
  *
- * Designed to be placed inside a layout wrapper (e.g., container, sidebar).
- * Recommended usage:
- *     get_template_part( 'templates/components/pagination', 'nav' );
+ * Uses `the_posts_pagination()`, which includes a <nav> element and hidden <h2> for screen readers.
+ *
+ * Usage: Call within archive templates using:
+ * get_template_part( 'templates/components/pagination', 'archive' );
  *
  * @package Axon
  */
@@ -27,11 +27,11 @@ if ( is_search() ) {
 }
 ?>
 
-<div class="pagination-nav">
-    <?php the_posts_pagination( array(
+<?php 
+    the_posts_pagination( array(
         'mid_size'           => 2,
         'prev_text'          => __( '« Prev', theme_get_text_domain() ),
         'next_text'          => __( 'Next »', theme_get_text_domain() ),
         'screen_reader_text' => $screen_reader_label,
-    ) ); ?>
-</div>
+    ) ); 
+?>

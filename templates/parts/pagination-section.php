@@ -2,8 +2,8 @@
 /**
  * Template Part: Pagination Wrapper
  *
- * Wraps the pagination navigation component in a standard section.
- * Intended for use in templates such as archives, search results, or anywhere you need pagination.
+ * Wraps the Pagination Archive component in a standard section.
+ * Intended for use in templates such as archives, search results, or anywhere you need multi-post pagination.
  *
  * @package Axon
  */
@@ -13,7 +13,7 @@
     <div class="container pagination__container">
         <div class="row pagination__row">
                 <div class="col pagination__col">
-                    <?php get_template_part( 'templates/components/pagination', 'nav' ); ?>
+                    <?php get_template_part( 'templates/components/pagination', 'archive' ); ?>
             </div> <!-- end pagination__col -->
         </div> <!-- end pagination__row -->
     </div> <!-- end pagination__container -->
