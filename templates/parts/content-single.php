@@ -21,7 +21,7 @@ if ( get_post_type() !== 'post' ) {
                 <?php while ( have_posts() ) : the_post(); ?>
                     <?php if ( current_user_can( 'edit_posts' ) ) : ?>
                         <p class="alert">
-                            This content is called from <code>templates/parts/content-single.php</code>, which is loaded from the <code>single.php</code> template. <br> You can safely delete or hide this alert anytime.
+                            The following <strong>content</strong> is configured in <code>templates/parts/content-single.php</code>, which is called from the <code>single.php</code> template. <br> You can safely delete or hide this alert anytime.
                         </p>
                     <?php endif; ?>
 
