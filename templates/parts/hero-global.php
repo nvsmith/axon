@@ -28,7 +28,7 @@ if ( is_front_page() && is_home() ) {
 	$title = get_the_archive_title();
 
 } elseif ( is_search() ) {
-	$title = sprintf( __( 'Search Results for: %s', theme_get_text_domain() ), get_search_query() );
+	$title = __( 'Search', theme_get_text_domain() );
 
 } elseif ( is_404() ) {
 	$title = __( 'Page Not Found', theme_get_text_domain() );
