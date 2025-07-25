@@ -1,6 +1,8 @@
 <?php
 /**
- * Search results template.
+ * Search results template. 
+ * 
+ * Loads content from `content-search.php` to display the content of each matching post.
  *
  * @package Axon
  */

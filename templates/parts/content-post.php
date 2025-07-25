@@ -26,12 +26,12 @@ if ( get_post_type() !== 'post' ) {
                                     <?php the_title(); ?>
                                 </a>
                             </h3>
+                        </div>
                             
-                            <div class="post-preview__meta">
-                                <span class="post-preview__date"><?php echo esc_html( get_the_date() ); ?></span>
-                        
-                                <span class="post-preview__author"><?php echo esc_html( get_the_author() ); ?></span>
-                            </div>
+                        <div class="post-preview__meta">
+                            <span class="post-preview__date"><?php echo esc_html( get_the_date() ); ?></span>
+                    
+                            <span class="post-preview__author"><?php echo esc_html( get_the_author() ); ?></span>
                         </div>
                 
                         <div class="post-preview__body">
